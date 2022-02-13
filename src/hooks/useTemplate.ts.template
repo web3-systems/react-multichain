@@ -1,0 +1,68 @@
+// @ts-nocheck
+import { useEffect, useState } from 'react';
+
+import { HookState, HookStatus } from '../types';
+import useClients from './useClients';
+
+interface HookUseTemplateState extends HookState {
+  data?: any;
+}
+
+export interface HookUseTemplateOutput {
+  status: HookStatus;
+  meta?: any;
+  data?: any;
+}
+
+/**
+ * @name useTemplate
+ * @description Template
+ * @param chainId
+ * @returns
+ */
+function useTemplate(chainId?: number): HookUseTemplateOutput {
+  const [state, setState] = useState<HookUseTemplateState>({
+    status: HookStatus.LOADING,
+    meta: undefined,
+    data: undefined,
+  });
+
+  const { data: _data, meta: _meta } = useClients(chainId);
+
+  useEffect(() => {
+    setState({
+      status: HookStatus.LOADING,
+      meta: _meta,
+      data: undefined,
+    });
+  }, [_meta]);
+
+  useEffect(() => {
+    if (
+      state?.status === HookStatus.LOADING &&
+      state?.meta?.msg === 'clients-loaded'
+    ) {
+      const data = undefined;
+
+      setState({
+        status: HookStatus.SUCCESS,
+        meta: {
+          msg: 'contracts-loaded',
+          data: {
+            source: 'database',
+            cache: true,
+          },
+        },
+        data: data,
+      });
+    }
+  });
+
+  return {
+    status: state?.status,
+    data: state?.data,
+    meta: state?.meta,
+  };
+}
+
+export default useTemplate;
