@@ -3,16 +3,7 @@
   "overrides": [
     {
       "files": ["**/*.ts", "**/*.tsx"],
-      "plugins": ["unused-imports"],
-      "parserOptions": {
-        "project": "./tsconfig.json"
-      },
       "rules": {
-        "unused-imports/no-unused-imports": "error",
-        "unused-imports/no-unused-vars": [
-          "error",
-          { "argsIgnorePattern": "^_" }
-        ],
         "import/order": [
           "error",
           {

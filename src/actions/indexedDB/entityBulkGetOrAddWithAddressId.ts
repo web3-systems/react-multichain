@@ -5,11 +5,10 @@ async function entityBulkGetOrAddWithAddressId(
   table: 'accounts' | 'transactions' | 'contracts' | string,
   ids: Array<string>,
   chainId?: number
-): Promise<Array<any>> {
+): Promise<Array<any> | any> {
   try {
     if (!client) throw new Error('DatabaseClient Undefined');
     const documentsExisting = await client.bulkGet(table, ids);
-    console.log(documentsExisting, 'documentsExistingdocumentsExisting');
     for (let index = 0; index < documentsExisting.length; index++) {
       const document = documentsExisting[index];
       if (typeof document === 'undefined') {

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+
 import { Address } from '@web3-systems/react-evm';
 import { MoreHorizontal, Delete } from 'react-feather';
 import { Popover } from 'react-tiny-popover';
@@ -74,7 +75,9 @@ const columns = [
       return (
         <div className="flex justify-between items-center">
           <a href={`/contract/${row.original.address}`}>
-            <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800 dark:bg-green-700 dark:text-green-100">View</span>
+            <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800 dark:bg-green-700 dark:text-green-100">
+              View
+            </span>
           </a>
           <Popover
             isOpen={isPopoverOpen}
@@ -88,7 +91,7 @@ const columns = [
                     id={row.original.address}
                     chainId={1}
                   >
-                    <div className='flex justify-between items-center'>
+                    <div className="flex justify-between items-center">
                       <span className="text-xs tag tag-red tag-sm cursor-pointer">
                         Delete
                       </span>
@@ -99,9 +102,12 @@ const columns = [
               </div>
             }
           >
-              <span onClick={() => setIsPopoverOpen(!isPopoverOpen)} className="bg-white bg-opacity-20 ml-2 rounded-xl px-2 inline-block shrink w-24">
-                <MoreHorizontal width={14} />
-              </span>
+            <span
+              onClick={() => setIsPopoverOpen(!isPopoverOpen)}
+              className="bg-white bg-opacity-20 ml-2 rounded-xl px-2 inline-block shrink w-24"
+            >
+              <MoreHorizontal width={14} />
+            </span>
           </Popover>
         </div>
       );

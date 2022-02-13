@@ -64,7 +64,7 @@ function useBulkGetOrConstructContracts(
           },
         });
       }
-
+      (() => scannerClient)();
       (async () => {
         const entity = await entityBulkGetOrAddWithAddressId(
           databaseClient,
