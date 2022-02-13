@@ -21,7 +21,7 @@ export async function bulkConstructContract(
       addresses,
       chainId
     );
-    const __entities = entities.map(e => {
+    const __entities = entities.map((e: any) => {
       let _e = e;
       _e.keywords = keywords;
       return _e;
