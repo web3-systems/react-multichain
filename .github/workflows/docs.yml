@@ -17,6 +17,7 @@ jobs:
       
       - name: Build 💻
         run: yarn build
+        continue-on-error: true
       
       - name: Generate Docs 📖
         run: yarn docs:html
