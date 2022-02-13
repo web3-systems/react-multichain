@@ -50,6 +50,7 @@
     "@web3-systems/multiscan-client": "latest",
     "classnames": "^2.3.1",
     "nested-property": "^4.0.0",
+    "react-table": "^7.7.0",
     "react-tiny-popover": "^7.0.1",
     "use-immer": "^0.6.0"
   },
