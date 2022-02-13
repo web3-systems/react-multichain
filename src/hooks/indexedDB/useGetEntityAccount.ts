@@ -1,22 +1,22 @@
 import { useEffect, useState } from 'react';
 
 import { useIsDatabaseClientReady } from '..';
-import { HookStatus, HookState, ABI } from '../../types';
+import findOrAddDocumentWithId from '../../actions/indexedDB/findOrAddDocumentWithId';
+import { HookStatus, HookState } from '../../types';
 import { destructureClientsAndValidate } from '../../utils';
 import updateContractEntityFromScannerContractSourceCode from '../../utils/createContractEntityFromScannerContractSourceCode';
-import findOrAddDocumentWithId from '../core/findOrAddDocumentWithId';
-// import updateContractEntityFromScannerContractSourceCode from '../utils/createContractEntityFromScannerContractSourceCode';
 import useClients from '../core/useClients';
 import useSyncHookStates from '../core/useSyncHookStates';
 
 interface HookUseGetEntityAccountState extends HookState {
-  data?: ABI;
+  data?: any;
 }
 
 export interface HookUseGetEntityAccountOutput {
   status: HookStatus;
   meta?: any;
-  data?: ABI;
+  data?: any;
+  error?: any;
 }
 
 /**

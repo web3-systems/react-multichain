@@ -4,7 +4,7 @@ import databaseInsert from '../../actions/inmemoryDB/databaseInsert';
 import { EntityContract, HookState, HookStatus, ABI } from '../../types';
 import { HOOK_LOADING } from '../constants';
 import useClients from '../core/useClients';
-import useSyncHookStates from '../useSyncHookStates';
+import useSyncHookStates from '../core/useSyncHookStates';
 
 export interface HookUseDatabaseInsertState extends HookState {
   data?: EntityContract[];
@@ -25,7 +25,7 @@ export function useDatabaseInsert(
   const { data: clientData, meta } = useClients(chainId);
   const HANDLE_INSERT = () =>
     databaseInsert(
-      clientData?.databaseClient,
+      clientData?.databaseClient as any,
       entity,
       query,
       chainId || 1,
